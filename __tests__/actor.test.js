@@ -1,6 +1,5 @@
 const request = require('supertest');
 const app = require('../lib/app');
-const mongoose = require('mongoose');
 require('../lib/db/data-helpers');
 
 describe('actor routes', () => {
