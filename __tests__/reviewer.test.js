@@ -1,24 +1,23 @@
 const request = require('supertest');
 const app = require('../lib/app');
-const mongoose = require('mongoose');
 const { getReviewer } = require('../lib/db/data-helpers');
 
 describe('reviewer routes', () => {
-  it('creates an reviewer', () => {
+  it('creates a reviewer', () => {
     
     return request(app)
       .post('/api/v1/reviewers')
       .send({
-        name: 'Freddy Grumpy',
-        company: 'Portland Ripe Bananas'
+        name: 'Grumpy',
+        company: 'Pojos',
       },
       )
       .then(res => {
         expect(res.body).toEqual({
           __v: 0,
           _id: expect.any(String),
-          name: 'Freddy Grumpy',
-          company: 'Portland Ripe Bananas'
+          name: 'Grumpy',
+          company: 'Pojos',
         });
       });
   });

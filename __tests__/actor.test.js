@@ -9,8 +9,8 @@ describe('actor routes', () => {
       .post('/api/v1/actors')
       .send({
         name: 'Jessie Big Grin',
-        DOB: '12/4/71',
-        POB: 'Chautauqua, Tennessee'
+        dob: '12/4/71',
+        pob: 'Chautauqua, Tennessee'
       },
       )
       .then(res => {
@@ -18,8 +18,8 @@ describe('actor routes', () => {
           __v: 0,
           _id: expect.any(String),
           name: 'Jessie Big Grin',
-          DOB: '12/4/71',
-          POB: 'Chautauqua, Tennessee'
+          dob: '12/4/71',
+          pob: 'Chautauqua, Tennessee'
         });
       });
   });

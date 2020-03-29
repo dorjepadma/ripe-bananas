@@ -11,7 +11,7 @@ describe('film routes', () => {
       .send({
         title: 'The Great Corona Scare',
         released: '12/17/2019',
-        studioId: studio._id
+        studioId: studio._id,
       })
       .then(res => {
         expect(res.body).toEqual({
