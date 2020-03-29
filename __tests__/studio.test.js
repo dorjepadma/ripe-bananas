@@ -1,9 +1,8 @@
-// const Studio = require('../lib/routes/studio');
 
 const request = require('supertest');
 const app = require('../lib/app');
 const mongoose = require('mongoose');
-require('../lib/db/data-helpers');
+const { getStudio } = require('../lib/db/data-helpers');
 
 describe('studio routes', () => {
   it('creates a studio', () => {
@@ -33,4 +32,33 @@ describe('studio routes', () => {
         });
       });
   });
+  it('gets a  studio by id', async() => {
+    const studio = await getStudio();
+
+    return request(app)
+      .get(`/api/v1/studios/${studio._id}`)
+      .then(res => {
+        expect(res.body).toContainEqual(studio);
+      });
+  });
+
+  it('gets all studios', async() => {
+    const studios = await getStudio();
+
+    return request(app)
+      .get('/api/v1/studios')
+      .then(res => {
+        expect(res.body).toContainEqual(studios);
+      });
+  });
+  it('delete a studio by id', async() => {
+    const studio = await getStudio();
+
+    return request(app)
+      .delete(`/api/v1/studios/${studio._id}`)
+      .then(res => {
+        expect(res.body).toEqual(studio);
+      });
+  });
 });
+
